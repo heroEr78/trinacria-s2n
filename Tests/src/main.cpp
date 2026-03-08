@@ -1,4 +1,6 @@
-﻿#include <gtest/gtest.h>
+﻿#include <filesystem>
+#include <gtest/gtest.h>
+#include <sol/state.hpp>
 
 int main(int argc, char** argv)
 {

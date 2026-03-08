@@ -1,5 +1,5 @@
 file(GLOB_RECURSE SRC CONFIGURE_DEPENDS "*.cpp" "*.c")
-file(GLOB_RECURSE RESOURCES CONFIGURE_DEPENDS "resources/")
+file(GLOB_RECURSE RESOURCES CONFIGURE_DEPENDS "resources/*")
 
 add_executable(TrinacriaS2NTests ${SRC} ${RESOURCES})
 add_custom_command(TARGET TrinacriaS2NTests POST_BUILD

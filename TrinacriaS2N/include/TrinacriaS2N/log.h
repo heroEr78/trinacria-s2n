@@ -1,0 +1,1 @@
+﻿#define TRCN_LOG(m) std::cout << (m)
