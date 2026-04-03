@@ -1,12 +1,9 @@
 ﻿#pragma once
 #include <sol/state.hpp>
+#include <TrinacriaS2N/BaseNode.h>
 
 namespace Trinacria::S2N
 {
-// Constants, modify them if you need
-constexpr auto ID_NODE_NAME = "Id";
-constexpr auto PUBLIC_NODE_NAME = "Public";
-constexpr auto EVENTS_NODE_NAME = "Events";
 
 /**
  * @brief The class that represents a lua node.
@@ -17,7 +14,7 @@ constexpr auto EVENTS_NODE_NAME = "Events";
  *      the functions are events that every other node can advise the script of
  *    *an Id string field, a unique-identifier for the script.
  */
-class Node
+class Node : public BaseNode
 {
 public:
     Node() = default;
@@ -37,30 +34,6 @@ public:
     explicit Node(sol::state* state);
 
     /**
-     * @brief Calls the other method to link a state
-     * @param state the given state.
-     */
-    inline void LinkState(sol::state& state);
-
-    /**
-     * @brief Sets the state of a node
-     * @param state the given state
-     */
-    void LinkState(sol::state* state);
-
-    /**
-     * @brief Gets the id from the object, if the id is empty, the function will grab it from the script
-     * @return the script id
-     */
-    const std::string& Id();
-
-    /**
-     * @brief The const versions of Id() function
-     * @return the object id
-     */
-    const std::string& GetId() const;
-
-    /**
      * @brief Gets the public table of a script
      * @return the public table
      */
@@ -71,20 +44,5 @@ public:
      * @return The events table, empty if none provided.
      */
     sol::table Events() const;
-
-    /**
-     * @brief Gets the state
-     * @return the state
-     */
-    const sol::state& GetState() const;
-    
-    /**
-     * @brief Gets the state
-     * @return the state
-     */
-    sol::state& GetState();
-private:
-    sol::state* _state = nullptr;
-    std::string _id;
 };
 }

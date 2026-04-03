@@ -5,50 +5,11 @@
 namespace Trinacria::S2N
 {
 
-Node::Node(sol::state& state)
-{
-    LinkState(state);
-}
+Node::Node(sol::state& state): BaseNode(state)
+{}
 
-Node::Node(sol::state* state)
-{
-    LinkState(state);
-}
-
-void Node::LinkState(sol::state& state)
-{
-    LinkState(&state);
-}
-
-void Node::LinkState(sol::state* state)
-{
-    _state = state;
-}
-
-const std::string& Node::Id()
-{
-    TRCN_DEPEND_START("Trinacria::S2N::Node::Id");
-    
-    if (!_id.empty())
-    {
-        return _id;
-    }
-    
-    TRCN_ASSERTEXP_MSG(_state != nullptr, "Before doing anything with Node class you must link a state.");
-    
-    sol::object idObj = (*_state)[ID_NODE_NAME];
-    TRCN_ASSERTEXP_MSG(idObj.is<std::string>(), "The Id property should be a string.");
-    
-    _id = idObj.as<std::string>();
-    TRCN_ASSERTEXP_MSG(!_id.empty(), "The Id property should be a not-empty string.");
-    
-    return _id;
-}
-
-const std::string& Node::GetId() const
-{
-    return _id;
-}
+Node::Node(sol::state* state) : BaseNode(state)
+{}
 
 sol::table Node::Public() const
 {
@@ -85,15 +46,5 @@ sol::table Node::Events() const
     TRCN_ASSERTEXP_MSG(eventsTableObj.is<sol::table>(), "The Events property should be a function returning table");
     
     return eventsTableObj.as<sol::table>();
-}
-
-const sol::state& Node::GetState() const
-{
-    return *_state;
-}
-
-sol::state& Node::GetState()
-{
-    return *_state;
 }
 }

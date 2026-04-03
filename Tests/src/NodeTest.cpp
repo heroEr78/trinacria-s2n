@@ -1,7 +1,7 @@
 ﻿#include <gtest/gtest.h>
 #include "TrinacriaS2N/Node.h"
 
-class NodeTest : public ::testing::Test
+class NodeTest : public testing::Test
 {
 public:
     NodeTest()
