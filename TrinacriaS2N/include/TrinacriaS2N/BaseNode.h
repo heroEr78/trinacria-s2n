@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <string>
+#include <sol/environment.hpp>
 
 namespace sol
 {
@@ -27,7 +28,7 @@ public:
      * @brief Constructor that links the given state
      * @param state the given state, a reference
      */
-    explicit BaseNode(sol::state& state);
+    explicit BaseNode(sol::environment& environment);
     
     /**
      * @brief Constructor that link the given state
@@ -35,19 +36,19 @@ public:
      *   This parameter is any different from the one of
      *   the other constructor
      */
-    explicit BaseNode(sol::state* state);
+    explicit BaseNode(sol::environment* environment);
     
     /**
      * @brief Calls the other method to link a state
-     * @param state the given state.
+     * @param environment the given state.
      */
-    inline void LinkState(sol::state& state);
+    inline void LinkEnvironment(sol::environment& environment);
 
     /**
      * @brief Sets the state of a node
-     * @param state the given state
+     * @param environment the given state
      */
-    void LinkState(sol::state* state);
+    void LinkEnvironment(sol::environment* environment);
 
     /**
      * @brief Gets the id from the object, if the id is empty, the function will grab it from the script
@@ -65,15 +66,15 @@ public:
      * @brief Gets the state
      * @return the state
      */
-    const sol::state& GetState() const;
+    const sol::environment& GetState() const;
     
     /**
      * @brief Gets the state
      * @return the state
      */
-    sol::state& GetState();
+    sol::environment& GetState();
 protected:
-    sol::state* _state = nullptr;
+    sol::environment* _environment = nullptr;
     std::string _id;
 };
 }

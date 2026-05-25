@@ -6,16 +6,20 @@
 class NetNodeTest : public testing::Test
 {
 public:
-    NetNodeTest()
+    NetNodeTest(): _netNodeEnvironment(_netNodeState, sol::create, _netNodeState.globals())
     {
         _netNodeState.open_libraries(sol::lib::base);
-        _netNodeState.do_file("./resources/NetNodeClassTestScript.lua");
-        _netNode.LinkState(_netNodeState);
+        _netNodeState.do_file(
+            "./resources/NetNodeClassTestScript.lua",
+            _netNodeEnvironment
+        );
+        _netNode.LinkEnvironment(_netNodeEnvironment);
     }
 protected:
     Trinacria::S2N::NetNode _netNode;
 private:
     sol::state _netNodeState;
+    sol::environment _netNodeEnvironment;
 };
 
 TEST_F(NetNodeTest, IdTest)

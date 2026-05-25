@@ -4,14 +4,15 @@
 class NodeTest : public testing::Test
 {
 public:
-    NodeTest()
+    NodeTest(): _nodeEnvironment(_nodeState, sol::create, _nodeState.globals())
     {
         _nodeState.open_libraries(sol::lib::base);
-        _nodeState.do_file("./resources/NodeClassTestScript.lua");
-        _node.LinkState(_nodeState);
+        _nodeState.do_file("./resources/NodeClassTestScript.lua", _nodeEnvironment);
+        _node.LinkEnvironment(_nodeEnvironment);
     }
 private:
     sol::state _nodeState;
+    sol::environment _nodeEnvironment;
 protected:
     Trinacria::S2N::Node _node;
 };

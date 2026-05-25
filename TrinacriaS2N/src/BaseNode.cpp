@@ -8,24 +8,24 @@
 namespace Trinacria::S2N
 {
 
-BaseNode::BaseNode(sol::state& state)
+BaseNode::BaseNode(sol::environment& environment)
 {
-    LinkState(state);
+    LinkEnvironment(environment);
 }
 
-BaseNode::BaseNode(sol::state* state)
+BaseNode::BaseNode(sol::environment* environment)
 {
-    LinkState(state);
+    LinkEnvironment(environment);
 }
 
-void BaseNode::LinkState(sol::state& state)
+void BaseNode::LinkEnvironment(sol::environment& environment)
 {
-    LinkState(&state);
+    LinkEnvironment(&environment);
 }
 
-void BaseNode::LinkState(sol::state* state)
+void BaseNode::LinkEnvironment(sol::environment* environment)
 {
-    _state = state;
+    _environment = environment;
 }
 
 const std::string& BaseNode::Id()
@@ -37,9 +37,9 @@ const std::string& BaseNode::Id()
         return _id;
     }
     
-    TRCN_ASSERTEXP_MSG(_state != nullptr, "Before doing anything with Node class you must link a state.");
+    TRCN_ASSERTEXP_MSG(_environment != nullptr, "Before doing anything with Node class you must link a state.");
     
-    sol::object idObj = (*_state)[ID_NODE_NAME];
+    sol::object idObj = (*_environment)[ID_NODE_NAME];
     TRCN_ASSERTEXP_MSG(idObj.is<std::string>(), "The Id property should be a string.");
     
     _id = idObj.as<std::string>();
@@ -53,14 +53,14 @@ const std::string& BaseNode::GetId() const
     return _id;
 }
 
-const sol::state& BaseNode::GetState() const
+const sol::environment& BaseNode::GetState() const
 {
-    return *_state;
+    return *_environment;
 }
 
-sol::state& BaseNode::GetState()
+sol::environment& BaseNode::GetState()
 {
-    return *_state;
+    return *_environment;
 }
 
 }

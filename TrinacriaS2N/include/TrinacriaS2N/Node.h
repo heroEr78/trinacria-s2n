@@ -23,7 +23,7 @@ public:
      * @brief Constructor that links the given state
      * @param state the given state, a reference
      */
-    explicit Node(sol::state& state);
+    explicit Node(sol::environment& environment);
 
     /**
      * @brief Constructor that link the given state
@@ -31,7 +31,7 @@ public:
      *   This parameter is any different from the one of
      *   the other constructor
      */
-    explicit Node(sol::state* state);
+    explicit Node(sol::environment* environment);
 
     /**
      * @brief Gets the public table of a script

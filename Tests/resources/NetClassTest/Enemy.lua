@@ -1,45 +1,26 @@
-Id = "enemy"
+﻿Id = "Enemy"
 
-local inflictedDamage = 0;
-local health = 100;
+local obj = {
+    ["Health"] = 100,
+    ["DamageInflated"] = 0,
+}
+
+local events = {
+    ["OnDamaged"] = function(damage)
+        TestExpose("Enemy OnDamaged called with " .. damage)
+        obj["Health"] = obj["Health"] - damage
+    end,
+    ["OnDamagePlayer"] = function()
+        TestExpose("Enemy OnDamagePlayer called")
+        _NetScript.GetEvents("Player")["OnDamaged"](10)
+        obj["DamageInflated"] = obj["DamageInflated"] + 10
+    end
+}
 
 function Public()
-    local netScript = _GetNetScript();
-    local getEvents = netScript["GetEvents"]
-    local getScript = netScript["GetScript"]
-    
-    local result = {
-        ["GetHealth"] = function () return health end,
-        ["GetInflictedDamage"] = function() return inflictedDamage end,
-        ["Damage"] = function (damage)
-            local playerEvents = getEvents("player")
-            playerEvents["OnDamage"](damage)
-            inflictedDamage = inflictedDamage + damage
-
-            local playerScript = getScript("player")
-            --print("The player health is now: " .. tostring(playerScript["Health"]) .. "")
-            --print("Its total inflicted damage: " .. tostring(playerScript["InflictedDamage"]) .. "")
-        end
-    }
-    
-    -- Optional: iterate for debug (kept commented out)
-    for key, val in pairs(result) do
-        local printValue = ""
-        if(type(val) ~= "function") then
-            printValue = val
-        else
-            printValue = tostring(val())
-        end
-        print("Key: " .. key .. ", val: " .. printValue)
-    end
-
-    return result
+    return obj
 end
 
 function Events()
-    return {
-        ["OnDamage"] = function (damage)
-            health = health - damage;
-        end
-    }
+    return events
 end

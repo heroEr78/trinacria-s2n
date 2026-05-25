@@ -1,44 +1,29 @@
-Id = "player"
+﻿Id = "Player"
 
-local health = 100;
-local inflictedDamage = 0;
+local obj = {
+    ["DamageInflated"] = 0,
+    ["Health"] = 100
+}
+
+local events = {
+    ["OnDamaged"] = function(damage)
+        TestExpose("Player OnDamaged called with " .. damage)
+        obj["Health"] = obj["Health"] - damage
+    end,
+    ["OnDamageEnemy"] = function()
+        TestExpose("Player OnDamageEnemy called")
+        _NetScript.GetEvents("Enemy")["OnDamaged"](10)
+        obj["DamageInflated"] = obj["DamageInflated"] + 10
+    end,
+    ["IncrementDamageInflated"] = function()
+        obj["DamageInflated"] = obj["DamageInflated"] + 10
+    end
+}
 
 function Public()
-    local netScript = _GetNetScript();
-    local getEvents = netScript["GetEvents"]
-    local getScript = netScript["GetScript"]
-    
-    local result =  {
-        ["GetHealth"] = function () return health end,
-        ["GetInflictedDamage"] = function() 
-            print("GetInflictedDamage called")
-            return inflictedDamage 
-            end,
-        ["Damage"] = function (damage)
-            local enemyEvents = getEvents("enemy")
-            enemyEvents["OnDamage"](damage)
-            inflictedDamage = inflictedDamage + damage
-
-            local enemyScript = getScript("enemy")
-            --print("The enemy health is now: " .. tostring(enemyScript["Health"]) .. "")
-            --print("Its total inflicted damage: " .. tostring(enemyScript["InflictedDamage"]) .. "")
-        end
-    }
-
-    for key, val in pairs(result) do
-        local printValue = ""
-        if(type(val) ~= "function") then
-            printValue = val
-        end
-        print("Key: " .. key .. ", val: " .. printValue)
-    end
-    return result
+    return obj
 end
 
 function Events()
-    return {
-        ["OnDamage"] = function (damage)
-            health = health - damage
-        end
-    }
-end
+    return events
+end 
