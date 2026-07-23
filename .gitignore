@@ -14,9 +14,11 @@ Release/
 
 *.vcxproj
 *.vcxproj.user
+*.sln*
 *.vcxproj.filters
 *.sln
 CMakeCache.txt
+DartConfiguration.tcl
 *.cmake
 .lib
 .pdb
