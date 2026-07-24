@@ -82,7 +82,7 @@ end
 
 ### NetNode
 
-This is a light `NetNode`, that doesn't add any layer on top of what the library has actually built.
+This is a dummy `NetNode`, that doesn't add any layer on top of what the library has actually built.
 
 ```lua
 Id = "Net"
