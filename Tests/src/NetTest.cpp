@@ -99,7 +99,7 @@ TEST_F(NetTest, EventTableTest)
     EXPECT_EQ(enemyOnDamagePlayer.get_type(), sol::type::function);
 }
 
-TEST_F(NetTest, CommunicationTest)
+TEST_F(NetTest, QueryEventsFromAnotherScriptTest)
 {
     Trinacria::S2N::Node& playerNode = _net.GetNode("Player");
     Trinacria::S2N::Node& enemyNode = _net.GetNode("Enemy");
@@ -112,5 +112,22 @@ TEST_F(NetTest, CommunicationTest)
     
     EXPECT_EQ(((sol::object)enemyNode.Public()["DamageInflated"]).as<int>(), 10);
     EXPECT_EQ(((sol::object)playerNode.Public()["Health"]).as<int>(), 90);
+}
+
+TEST_F(NetTest, QueryPublicFromAnotherScriptTest)
+{
+    Trinacria::S2N::Node& playerNode = _net.GetNode("Player");
+    Trinacria::S2N::Node& enemyNode = _net.GetNode("Enemy");
+ 
+    playerNode.Events()["RefreshPose"]();
+    EXPECT_EQ(((sol::object)playerNode.Public()["Pose"]).as<std::string>(), "EnemyHealthyPose");
+    
+    enemyNode.Events()["OnDamaged"](50);
+    playerNode.Events()["RefreshPose"]();
+    EXPECT_EQ(((sol::object)playerNode.Public()["Pose"]).as<std::string>(), "EnemyStrugglingPose");
+    
+    enemyNode.Events()["OnDamaged"](100);
+    playerNode.Events()["RefreshPose"]();
+    EXPECT_EQ(((sol::object)playerNode.Public()["Pose"]).as<std::string>(), "EnemyDeadPose");
 }
 

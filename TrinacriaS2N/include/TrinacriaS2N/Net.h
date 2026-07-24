@@ -8,14 +8,14 @@
 namespace Trinacria::S2N
 {
 constexpr auto PUBLIC_NET_NAME = "_NetScript";
-constexpr auto PUBLIC_NODE_GETTER_NAME = "GetNode";
+constexpr auto PUBLIC_NODE_GETTER_NAME = "GetScript";
 constexpr auto PUBLIC_EVENTS_GETTER_NAME = "GetEvents";
 constexpr auto NET_NODE_GETTER_NODE = "_GetScript";
 constexpr auto NET_NODE_GETTER_EVENTS = "_GetEvents";
 
 /**
  * @brief The class representing a net, that is the system where
- *  all nodes live in and communicate. The net exposes the net node.
+ *  all nodes live in and communicate. The net exposes the net node to all the nodes.
  */
 class Net
 {
@@ -23,8 +23,8 @@ public:
     /**
      * @brief The only constructor. Exposes the NetNode to all
      *   the nodes
-     *   @tparam Args the vararg template of libs
-     *   @param libs the libs the global state should opend
+     * @tparam Args the vararg template of libs
+     * @param libs the libs the global state should open
      */
     template<typename... Args>
     Net(Args&&... libs)
@@ -117,7 +117,7 @@ public:
      * @brief Queues the exposition of a sol::object returned 
      *   by the exposer to all the nodes added to the net.
      * @param name the name the scripts should be able to access exposed things
-     * @param exposer the function that takes a sol::state (the node is exposed to) 
+     * @param exposer the function that takes the global sol::state
      *   and returns the object to be exposed
      */
     void Expose(const std::string& name, const SolObjectExposer& exposer);
