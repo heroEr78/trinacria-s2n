@@ -9,7 +9,7 @@ public:
         _net.QueueNode("./resources/NetClassTest/Player.lua");
         _net.QueueNode("./resources/NetClassTest/Enemy.lua");
         _net.QueueNetNode("./resources/NetClassTest/Net.lua");
-        _net.Expose("TestExpose",[this](const sol::state_view& state) -> sol::object
+        _net.Expose("TestExpose",[this](sol::state_view state) -> sol::object
         {
             return sol::make_object(state, [this](const std::string& msg)
             {
@@ -131,3 +131,52 @@ TEST_F(NetTest, QueryPublicFromAnotherScriptTest)
     EXPECT_EQ(((sol::object)playerNode.Public()["Pose"]).as<std::string>(), "EnemyDeadPose");
 }
 
+// NOTE: this is a normal test without fixture
+TEST(NetNodeWithMoreThan1Argument, NetNodeWithMoreThan1Argument)
+{
+    std::vector<std::string> messages;
+    
+    Trinacria::S2N::Net net(sol::lib::base);
+    net.QueueNode("resources/NetNodeWithMultipleParametersTest/Script1.lua");
+    net.QueueNode("resources/NetNodeWithMultipleParametersTest/Script2.lua");
+    net.QueueNetNode("resources/NetNodeWithMultipleParametersTest/Net.lua");
+    net.Expose("Log",[&messages](sol::state_view state) -> sol::object
+    {
+        return sol::make_object(state, [&messages](const std::string& msg)
+        {
+            messages.push_back(msg);
+        });
+    });
+    net.RunAll();
+    
+    Trinacria::S2N::Node& script1 = net["Script1"];
+    Trinacria::S2N::Node& script2 = net["Script2"];
+    
+    script1.Events()["RequestForScript2"]();
+    
+    EXPECT_EQ(((sol::object)script1.Public()["Pose"]).as<int>(), -2);
+    EXPECT_EQ(((sol::object)script2.Public()["Pose"]).as<int>(), -1);
+    
+    sol::function_result script2RequireScript1Result = script2.Events()["RequireScript1"]();
+    sol::function_result script2RequireEvents1Result = script2.Events()["RequireEvents1"]();
+ 
+    // Compare in EXPECT_EQ strings so GTest say something human-readable
+    auto script2RequireScript1ResultTypeName = sol::type_name(script2.GetEnvironment().lua_state(),
+        script2RequireScript1Result.get_type());
+    
+    auto script2RequireEvents1ResultTypeName = sol::type_name(script2.GetEnvironment().lua_state(),
+        script2RequireEvents1Result.get_type());
+    
+    if (!script2RequireScript1Result.valid()) {
+        sol::error err = script2RequireScript1Result;
+        FAIL() << "Test failed because of error while executing script: " << err.what();
+    }
+    
+    if (!script2RequireEvents1Result.valid()) {
+        sol::error err = script2RequireEvents1Result;
+        FAIL() << "Test failed because of error while executing script: " << err.what();
+    }
+    
+    EXPECT_EQ(script2RequireScript1ResultTypeName, "nil");
+    EXPECT_EQ(script2RequireEvents1ResultTypeName, "nil");
+}

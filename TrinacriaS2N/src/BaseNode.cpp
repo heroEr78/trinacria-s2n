@@ -53,12 +53,12 @@ const std::string& BaseNode::GetId() const
     return _id;
 }
 
-const sol::environment& BaseNode::GetState() const
+const sol::environment& BaseNode::GetEnvironment() const
 {
     return *_environment;
 }
 
-sol::environment& BaseNode::GetState()
+sol::environment& BaseNode::GetEnvironment()
 {
     return *_environment;
 }

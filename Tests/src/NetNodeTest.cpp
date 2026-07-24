@@ -2,7 +2,6 @@
 #include <TrinacriaS2N/NetNode.h>
 #include <src/gtest-internal-inl.h>
 
-
 class NetNodeTest : public testing::Test
 {
 public:

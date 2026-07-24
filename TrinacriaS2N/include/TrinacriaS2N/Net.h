@@ -40,7 +40,7 @@ public:
                     PUBLIC_NODE_GETTER_NAME,
                     [this](
                     const std::string& id,
-                    const sol::variadic_args& opts) -> sol::table
+                    const sol::variadic_args& opts) -> sol::object
                     {
                         return _netNode.GetScript(id, opts);
                     }
@@ -50,7 +50,7 @@ public:
                     PUBLIC_EVENTS_GETTER_NAME,
                     [this](
                     const std::string& id,
-                    const sol::variadic_args& opts) -> sol::table
+                    const sol::variadic_args& opts) -> sol::object
                     {
                         return _netNode.GetEvents(id, opts);
                     }

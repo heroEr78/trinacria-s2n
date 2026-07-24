@@ -66,13 +66,13 @@ public:
      * @brief Gets the state
      * @return the state
      */
-    const sol::environment& GetState() const;
+    const sol::environment& GetEnvironment() const;
     
     /**
      * @brief Gets the state
      * @return the state
      */
-    sol::environment& GetState();
+    sol::environment& GetEnvironment();
 protected:
     sol::environment* _environment = nullptr;
     std::string _id;
