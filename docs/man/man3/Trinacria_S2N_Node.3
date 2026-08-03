@@ -1,0 +1,136 @@
+.TH "Trinacria::S2N::Node" 3 "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Trinacria::S2N::Node \- The class that represents a lua node\&. A \fBNode\fP represents a script part of a \fBNet\fP\&. Every script to be a node has to have: *a \fBPublic()\fP function that returns a table containing the properties of a script *an optional \fBEvents()\fP function that returns a table of functions: the functions are events that every other node can advise the script of *an Id string field, a unique-identifier for the script\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Node\&.h>\fP
+.PP
+Inherits \fBTrinacria::S2N::BaseNode\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNode\fP (sol::environment &environment)"
+.br
+.RI "Constructor that links the given state\&. "
+.ti -1c
+.RI "\fBNode\fP (sol::environment *environment)"
+.br
+.RI "Constructor that link the given state\&. "
+.ti -1c
+.RI "sol::table \fBPublic\fP () const"
+.br
+.RI "Gets the public table of a script\&. "
+.ti -1c
+.RI "sol::table \fBEvents\fP () const"
+.br
+.RI "Gets the events table of a script\&. "
+.in -1c
+
+Public Member Functions inherited from \fBTrinacria::S2N::BaseNode\fP
+.in +1c
+.ti -1c
+.RI "\fBBaseNode\fP (sol::environment &environment)"
+.br
+.RI "Constructor that links the given state\&. "
+.ti -1c
+.RI "\fBBaseNode\fP (sol::environment *environment)"
+.br
+.RI "Constructor that link the given state\&. "
+.ti -1c
+.RI "void \fBLinkEnvironment\fP (sol::environment &environment)"
+.br
+.RI "Calls the other method to link a state\&. "
+.ti -1c
+.RI "void \fBLinkEnvironment\fP (sol::environment *environment)"
+.br
+.RI "Sets the state of a node\&. "
+.ti -1c
+.RI "virtual const std::string & \fBId\fP ()"
+.br
+.RI "Gets the id from the object, if the id is empty, the function will grab it from the script\&. "
+.ti -1c
+.RI "const std::string & \fBGetId\fP () const"
+.br
+.RI "The const versions of \fBId()\fP function\&. "
+.ti -1c
+.RI "const sol::environment & \fBGetEnvironment\fP () const"
+.br
+.RI "Gets the state\&. "
+.ti -1c
+.RI "sol::environment & \fBGetEnvironment\fP ()"
+.br
+.RI "Gets the state\&. "
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Attributes inherited from \fBTrinacria::S2N::BaseNode\fP
+.in +1c
+.ti -1c
+.RI "sol::environment * \fB_environment\fP = nullptr"
+.br
+.ti -1c
+.RI "std::string \fB_id\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The class that represents a lua node\&. A \fBNode\fP represents a script part of a \fBNet\fP\&. Every script to be a node has to have: *a \fBPublic()\fP function that returns a table containing the properties of a script *an optional \fBEvents()\fP function that returns a table of functions: the functions are events that every other node can advise the script of *an Id string field, a unique-identifier for the script\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Trinacria::S2N::Node::Node (sol::environment & environment)\fR [explicit]\fP"
+
+.PP
+Constructor that links the given state\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIstate\fP the given state, a reference 
+.RE
+.PP
+
+.SS "Trinacria::S2N::Node::Node (sol::environment * environment)\fR [explicit]\fP"
+
+.PP
+Constructor that link the given state\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIstate\fP the given state, a pointer\&. This parameter is any different from the one of the other constructor 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "sol::table Trinacria::S2N::Node::Events () const"
+
+.PP
+Gets the events table of a script\&. 
+.PP
+\fBReturns\fP
+.RS 4
+The events table, empty if none provided\&. 
+.RE
+.PP
+
+.SS "sol::table Trinacria::S2N::Node::Public () const"
+
+.PP
+Gets the public table of a script\&. 
+.PP
+\fBReturns\fP
+.RS 4
+the public table 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

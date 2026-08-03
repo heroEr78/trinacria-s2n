@@ -1,0 +1,158 @@
+.TH "Trinacria::S2N::BaseNode" 3 "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Trinacria::S2N::BaseNode \- The base class of \fBNode\fP and \fBNetNode\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <BaseNode\&.h>\fP
+.PP
+Inherited by \fBTrinacria::S2N::NetNode\fP, and \fBTrinacria::S2N::Node\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBaseNode\fP (sol::environment &environment)"
+.br
+.RI "Constructor that links the given state\&. "
+.ti -1c
+.RI "\fBBaseNode\fP (sol::environment *environment)"
+.br
+.RI "Constructor that link the given state\&. "
+.ti -1c
+.RI "void \fBLinkEnvironment\fP (sol::environment &environment)"
+.br
+.RI "Calls the other method to link a state\&. "
+.ti -1c
+.RI "void \fBLinkEnvironment\fP (sol::environment *environment)"
+.br
+.RI "Sets the state of a node\&. "
+.ti -1c
+.RI "virtual const std::string & \fBId\fP ()"
+.br
+.RI "Gets the id from the object, if the id is empty, the function will grab it from the script\&. "
+.ti -1c
+.RI "const std::string & \fBGetId\fP () const"
+.br
+.RI "The const versions of \fBId()\fP function\&. "
+.ti -1c
+.RI "const sol::environment & \fBGetEnvironment\fP () const"
+.br
+.RI "Gets the state\&. "
+.ti -1c
+.RI "sol::environment & \fBGetEnvironment\fP ()"
+.br
+.RI "Gets the state\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "sol::environment * \fB_environment\fP = nullptr"
+.br
+.ti -1c
+.RI "std::string \fB_id\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The base class of \fBNode\fP and \fBNetNode\fP\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Trinacria::S2N::BaseNode::BaseNode (sol::environment & environment)\fR [explicit]\fP"
+
+.PP
+Constructor that links the given state\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIstate\fP the given state, a reference 
+.RE
+.PP
+
+.SS "Trinacria::S2N::BaseNode::BaseNode (sol::environment * environment)\fR [explicit]\fP"
+
+.PP
+Constructor that link the given state\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIstate\fP the given state, a pointer\&. This parameter is any different from the one of the other constructor 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "sol::environment & Trinacria::S2N::BaseNode::GetEnvironment ()"
+
+.PP
+Gets the state\&. 
+.PP
+\fBReturns\fP
+.RS 4
+the state 
+.RE
+.PP
+
+.SS "const sol::environment & Trinacria::S2N::BaseNode::GetEnvironment () const"
+
+.PP
+Gets the state\&. 
+.PP
+\fBReturns\fP
+.RS 4
+the state 
+.RE
+.PP
+
+.SS "const std::string & Trinacria::S2N::BaseNode::GetId () const"
+
+.PP
+The const versions of \fBId()\fP function\&. 
+.PP
+\fBReturns\fP
+.RS 4
+the object id 
+.RE
+.PP
+
+.SS "virtual const std::string & Trinacria::S2N::BaseNode::Id ()\fR [virtual]\fP"
+
+.PP
+Gets the id from the object, if the id is empty, the function will grab it from the script\&. 
+.PP
+\fBReturns\fP
+.RS 4
+the script id 
+.RE
+.PP
+
+.SS "void Trinacria::S2N::BaseNode::LinkEnvironment (sol::environment & environment)\fR [inline]\fP"
+
+.PP
+Calls the other method to link a state\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIenvironment\fP the given state\&. 
+.RE
+.PP
+
+.SS "void Trinacria::S2N::BaseNode::LinkEnvironment (sol::environment * environment)"
+
+.PP
+Sets the state of a node\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIenvironment\fP the given state 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

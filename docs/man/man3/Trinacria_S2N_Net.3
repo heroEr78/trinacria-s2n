@@ -1,0 +1,193 @@
+.TH "Trinacria::S2N::Net" 3 "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Trinacria::S2N::Net \- The class representing a net, that is the system where all nodes live in and communicate\&. The net exposes the net node to all the nodes\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Net\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "using \fBAllocator\fP = std::unordered_map<std::string, \fBNode\fP>"
+.br
+.ti -1c
+.RI "using \fBIterator\fP = Allocator::iterator"
+.br
+.ti -1c
+.RI "using \fBConstIterator\fP = Allocator::const_iterator"
+.br
+.ti -1c
+.RI "using \fBSolObjectExposer\fP = std::function<sol::object(sol::state_view)>"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename\&.\&.\&. Args> \fBNet\fP (Args &&\&.\&.\&. libs)"
+.br
+.RI "The only constructor\&. Exposes the \fBNetNode\fP to all the nodes\&. "
+.ti -1c
+.RI "\fBNode\fP & \fBGetNode\fP (const std::string &id)"
+.br
+.RI "Gets a \fBNode\fP that lives in the \fBNet\fP\&. "
+.ti -1c
+.RI "\fBNode\fP & \fBoperator[]\fP (const std::string &id)"
+.br
+.RI "Gets a \fBNode\fP that lives in the \fBNet\fP\&. "
+.ti -1c
+.RI "const \fBNode\fP & \fBGetNode\fP (const std::string &id) const"
+.br
+.RI "Gets a \fBNode\fP that lives in the \fBNet\fP\&. The const version of the previous functions\&. "
+.ti -1c
+.RI "const \fBNode\fP & \fBoperator[]\fP (const std::string &id) const"
+.br
+.RI "Gets a \fBNode\fP that lives in the \fBNet\fP\&. The const version of the previous functions\&. "
+.ti -1c
+.RI "void \fBQueueNode\fP (const std::string &path)"
+.br
+.RI "Adds a node to the net, and queues its execution to when the RunAll function called\&. "
+.ti -1c
+.RI "void \fBQueueNetNode\fP (const std::string &path)"
+.br
+.RI "Adds a net node to the net, and queues its execution to when the RunAll function called\&. "
+.ti -1c
+.RI "void \fBExpose\fP (const std::string &name, const SolObjectExposer &exposer)"
+.br
+.RI "Queues the exposition of a sol::object returned by the exposer to all the nodes added to the net\&. "
+.ti -1c
+.RI "void \fBRunAll\fP ()"
+.br
+.RI "Runs all the nodes, should be executed once after the configuration done with queues and exposes methods\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+The class representing a net, that is the system where all nodes live in and communicate\&. The net exposes the net node to all the nodes\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename\&.\&.\&. Args> Trinacria::S2N::Net::Net (Args &&\&.\&.\&. libs)\fR [inline]\fP"
+
+.PP
+The only constructor\&. Exposes the \fBNetNode\fP to all the nodes\&. 
+.PP
+\fBTemplate Parameters\fP
+.RS 4
+\fIArgs\fP the vararg template of libs 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIlibs\fP the libs the global state should open 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Trinacria::S2N::Net::Expose (const std::string & name, const SolObjectExposer & exposer)"
+
+.PP
+Queues the exposition of a sol::object returned by the exposer to all the nodes added to the net\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP the name the scripts should be able to access exposed things 
+.br
+\fIexposer\fP the function that takes the global sol::state and returns the object to be exposed 
+.RE
+.PP
+
+.SS "\fBNode\fP & Trinacria::S2N::Net::GetNode (const std::string & id)\fR [nodiscard]\fP"
+
+.PP
+Gets a \fBNode\fP that lives in the \fBNet\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP the id of the \fBNode\fP, assigned by the script 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The got node 
+.RE
+.PP
+
+.SS "const \fBNode\fP & Trinacria::S2N::Net::GetNode (const std::string & id) const\fR [nodiscard]\fP"
+
+.PP
+Gets a \fBNode\fP that lives in the \fBNet\fP\&. The const version of the previous functions\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP the id of the \fBNode\fP, assigned by the script 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The got node 
+.RE
+.PP
+
+.SS "\fBNode\fP & Trinacria::S2N::Net::operator[] (const std::string & id)\fR [inline]\fP, \fR [nodiscard]\fP"
+
+.PP
+Gets a \fBNode\fP that lives in the \fBNet\fP\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP the id of the \fBNode\fP, assigned by the script 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The got node 
+.RE
+.PP
+
+.SS "const \fBNode\fP & Trinacria::S2N::Net::operator[] (const std::string & id) const\fR [inline]\fP, \fR [nodiscard]\fP"
+
+.PP
+Gets a \fBNode\fP that lives in the \fBNet\fP\&. The const version of the previous functions\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP the id of the \fBNode\fP, assigned by the script 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The got node 
+.RE
+.PP
+
+.SS "void Trinacria::S2N::Net::QueueNetNode (const std::string & path)"
+
+.PP
+Adds a net node to the net, and queues its execution to when the RunAll function called\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP the path (absolute or relative) to the script 
+.RE
+.PP
+
+.SS "void Trinacria::S2N::Net::QueueNode (const std::string & path)"
+
+.PP
+Adds a node to the net, and queues its execution to when the RunAll function called\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpath\fP the path (absolute or relative) to the script 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.

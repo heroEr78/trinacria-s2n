@@ -1,0 +1,204 @@
+.TH "Trinacria::S2N::NetNode" 3 "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Trinacria::S2N::NetNode \- \fBNetNode\fP is the class representing the net node script\&. The net node script is the messenger every script calls to request the public table or the events of another script\&. This is not managed by the \fBNet\fP to give the user space to build something on top of the simple "can I have this script" thing, for example a visibility system for the scripts\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <NetNode\&.h>\fP
+.PP
+Inherits \fBTrinacria::S2N::BaseNode\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBNetNode\fP (sol::environment &environment)"
+.br
+.RI "A constructor that links the given state\&. "
+.ti -1c
+.RI "\fBNetNode\fP (sol::environment *environment)"
+.br
+.RI "A constructor that links to a given state\&. "
+.ti -1c
+.RI "template<typename\&.\&.\&. Args> sol::object \fBGetScript\fP (const std::string &id, Args &&\&.\&.\&. args) const"
+.br
+.RI "The wrapper to the lua function GetScript\&. This calls the lua function under the hood\&. "
+.ti -1c
+.RI "sol::object \fBGetScript\fP (const std::string &id, sol::variadic_args args) const"
+.br
+.RI "The wrapper to the lua function GetScript\&. This calls the lua function under the hood\&. "
+.ti -1c
+.RI "template<typename\&.\&.\&. Args> sol::object \fBGetEvents\fP (const std::string &id, Args &&\&.\&.\&. args) const"
+.br
+.RI "The wrapper to the lua function GetEvents\&. This calls the lua function under the hood\&. "
+.ti -1c
+.RI "sol::object \fBGetEvents\fP (const std::string &id, sol::variadic_args args) const"
+.br
+.RI "The wrapper to the lua function GetEvents\&. This calls the lua function under the hood\&. "
+.in -1c
+
+Public Member Functions inherited from \fBTrinacria::S2N::BaseNode\fP
+.in +1c
+.ti -1c
+.RI "\fBBaseNode\fP (sol::environment &environment)"
+.br
+.RI "Constructor that links the given state\&. "
+.ti -1c
+.RI "\fBBaseNode\fP (sol::environment *environment)"
+.br
+.RI "Constructor that link the given state\&. "
+.ti -1c
+.RI "void \fBLinkEnvironment\fP (sol::environment &environment)"
+.br
+.RI "Calls the other method to link a state\&. "
+.ti -1c
+.RI "void \fBLinkEnvironment\fP (sol::environment *environment)"
+.br
+.RI "Sets the state of a node\&. "
+.ti -1c
+.RI "virtual const std::string & \fBId\fP ()"
+.br
+.RI "Gets the id from the object, if the id is empty, the function will grab it from the script\&. "
+.ti -1c
+.RI "const std::string & \fBGetId\fP () const"
+.br
+.RI "The const versions of \fBId()\fP function\&. "
+.ti -1c
+.RI "const sol::environment & \fBGetEnvironment\fP () const"
+.br
+.RI "Gets the state\&. "
+.ti -1c
+.RI "sol::environment & \fBGetEnvironment\fP ()"
+.br
+.RI "Gets the state\&. "
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Protected Attributes inherited from \fBTrinacria::S2N::BaseNode\fP
+.in +1c
+.ti -1c
+.RI "sol::environment * \fB_environment\fP = nullptr"
+.br
+.ti -1c
+.RI "std::string \fB_id\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBNetNode\fP is the class representing the net node script\&. The net node script is the messenger every script calls to request the public table or the events of another script\&. This is not managed by the \fBNet\fP to give the user space to build something on top of the simple "can I have this script" thing, for example a visibility system for the scripts\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Trinacria::S2N::NetNode::NetNode (sol::environment & environment)\fR [explicit]\fP"
+
+.PP
+A constructor that links the given state\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIstate\fP the state to link, a reference 
+.RE
+.PP
+
+.SS "Trinacria::S2N::NetNode::NetNode (sol::environment * environment)\fR [explicit]\fP"
+
+.PP
+A constructor that links to a given state\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIstate\fP the pointer to the state to link 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename \&.\&.\&. Args> sol::object Trinacria::S2N::NetNode::GetEvents (const std::string & id, Args &&\&.\&.\&. args) const"
+
+.PP
+The wrapper to the lua function GetEvents\&. This calls the lua function under the hood\&. 
+.PP
+\fBTemplate Parameters\fP
+.RS 4
+\fIArgs\fP the type of the additional parameters (other than id), for example the id of the node that's requesting for another node\&. 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP the id of the node requested 
+.br
+\fIargs\fP the additional parameter built for the user to add extra functionalities without modifying the library (only the script), for example a visibility system\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the events table of the node requested 
+.RE
+.PP
+
+.SS "sol::object Trinacria::S2N::NetNode::GetEvents (const std::string & id, sol::variadic_args args) const"
+
+.PP
+The wrapper to the lua function GetEvents\&. This calls the lua function under the hood\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP the id of the node requested 
+.br
+\fIargs\fP the additional parameter built for the user to add extra functionalities without modifying the library (only the script), for example a visibility system\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the events table of the node requested 
+.RE
+.PP
+
+.SS "template<typename \&.\&.\&. Args> sol::object Trinacria::S2N::NetNode::GetScript (const std::string & id, Args &&\&.\&.\&. args) const"
+
+.PP
+The wrapper to the lua function GetScript\&. This calls the lua function under the hood\&. 
+.PP
+\fBTemplate Parameters\fP
+.RS 4
+\fIArgs\fP the type of the additional parameters (other than id), for example the id of the node that's requesting for another node\&. 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP the id of the node requested 
+.br
+\fIargs\fP the additional parameter built for the user to add extra functionalities without modifying the library (only the script), for example a visibility system\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the public table of the node requested 
+.RE
+.PP
+
+.SS "sol::object Trinacria::S2N::NetNode::GetScript (const std::string & id, sol::variadic_args args) const"
+
+.PP
+The wrapper to the lua function GetScript\&. This calls the lua function under the hood\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIid\fP the id of the node requested 
+.br
+\fIargs\fP the additional parameter built for the user to add extra functionalities without modifying the library (only the script), for example a visibility system\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+the public table of the node requested 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for My Project from the source code\&.
