@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.17.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: C:/Users/Utente/RiderProjects/TrinacriaS2N/TrinacriaS2N/include/TrinacriaS2N/NetNode.h Source File</title>
+<title>Trinacria S2N: C:/Users/Utente/RiderProjects/TrinacriaS2N/TrinacriaS2N/include/TrinacriaS2N/NetNode.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="codefolding.js"></script>
 <script type="text/javascript" src="clipboard.js"></script>
@@ -30,7 +30,7 @@ mermaid.initialize({ startOnLoad: true, theme: theme });
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Trinacria S2N
    </div>
   </td>
  </tr>
@@ -136,19 +136,19 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('_net_node_8h_s
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    NetNode() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_trinacria_1_1_s2_n_1_1_net_node.html#a2e467c7a8911af4e10a87f563f79bf68">   30</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="class_trinacria_1_1_s2_n_1_1_net_node.html#a2e467c7a8911af4e10a87f563f79bf68">NetNode</a>(sol::environment&amp; environment);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">explicit</span> NetNode(sol::environment&amp; environment);</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="class_trinacria_1_1_s2_n_1_1_net_node.html#aca195f5798a1d50e22dab6fcab288ac6">   36</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="class_trinacria_1_1_s2_n_1_1_net_node.html#aca195f5798a1d50e22dab6fcab288ac6">NetNode</a>(sol::environment* environment);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">explicit</span> NetNode(sol::environment* environment);</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    sol::object <a class="code hl_function" href="class_trinacria_1_1_s2_n_1_1_net_node.html#ae5f62af96b5116e945690e80dee9f530">GetScript</a>(<span class="keyword">const</span> std::string&amp; <span class="keywordtype">id</span>, Args&amp;&amp;... args) <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="class_trinacria_1_1_s2_n_1_1_net_node.html#a851f552d430b82e677b5552d961eb8a0">   61</a></span>    sol::object <a class="code hl_function" href="class_trinacria_1_1_s2_n_1_1_net_node.html#a851f552d430b82e677b5552d961eb8a0">GetScript</a>(<span class="keyword">const</span> std::string&amp; <span class="keywordtype">id</span>, sol::variadic_args args) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    sol::object <a class="code hl_function" href="class_trinacria_1_1_s2_n_1_1_net_node.html#ae5f62af96b5116e945690e80dee9f530">GetScript</a>(<span class="keyword">const</span> std::string&amp; <span class="keywordtype">id</span>, sol::variadic_args args) <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    </div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    sol::object <a class="code hl_function" href="class_trinacria_1_1_s2_n_1_1_net_node.html#a8dc08f8c34ae6005599c095a0a2da571">GetEvents</a>(<span class="keyword">const</span> std::string&amp; <span class="keywordtype">id</span>, Args&amp;&amp;... args) <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="class_trinacria_1_1_s2_n_1_1_net_node.html#a179f778cb04e031f7a7ba396dd4ec9d0">   86</a></span>    sol::object <a class="code hl_function" href="class_trinacria_1_1_s2_n_1_1_net_node.html#a179f778cb04e031f7a7ba396dd4ec9d0">GetEvents</a>(<span class="keyword">const</span> std::string&amp; <span class="keywordtype">id</span>, sol::variadic_args args) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    sol::object <a class="code hl_function" href="class_trinacria_1_1_s2_n_1_1_net_node.html#a8dc08f8c34ae6005599c095a0a2da571">GetEvents</a>(<span class="keyword">const</span> std::string&amp; <span class="keywordtype">id</span>, sol::variadic_args args) <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>};</div>
 </div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
@@ -195,11 +195,7 @@ document.addEventListener('DOMContentLoaded',() => { initNavTree('_net_node_8h_s
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>}</div>
 </div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>}</div>
-<div class="ttc" id="aclass_trinacria_1_1_s2_n_1_1_net_node_html_a179f778cb04e031f7a7ba396dd4ec9d0"><div class="ttname"><a href="class_trinacria_1_1_s2_n_1_1_net_node.html#a179f778cb04e031f7a7ba396dd4ec9d0">Trinacria::S2N::NetNode::GetEvents</a></div><div class="ttdeci">sol::object GetEvents(const std::string &amp;id, sol::variadic_args args) const</div><div class="ttdoc">The wrapper to the lua function GetEvents. This calls the lua function under the hood.</div></div>
-<div class="ttc" id="aclass_trinacria_1_1_s2_n_1_1_net_node_html_a2e467c7a8911af4e10a87f563f79bf68"><div class="ttname"><a href="class_trinacria_1_1_s2_n_1_1_net_node.html#a2e467c7a8911af4e10a87f563f79bf68">Trinacria::S2N::NetNode::NetNode</a></div><div class="ttdeci">NetNode(sol::environment &amp;environment)</div><div class="ttdoc">A constructor that links the given state.</div></div>
-<div class="ttc" id="aclass_trinacria_1_1_s2_n_1_1_net_node_html_a851f552d430b82e677b5552d961eb8a0"><div class="ttname"><a href="class_trinacria_1_1_s2_n_1_1_net_node.html#a851f552d430b82e677b5552d961eb8a0">Trinacria::S2N::NetNode::GetScript</a></div><div class="ttdeci">sol::object GetScript(const std::string &amp;id, sol::variadic_args args) const</div><div class="ttdoc">The wrapper to the lua function GetScript. This calls the lua function under the hood.</div></div>
 <div class="ttc" id="aclass_trinacria_1_1_s2_n_1_1_net_node_html_a8dc08f8c34ae6005599c095a0a2da571"><div class="ttname"><a href="class_trinacria_1_1_s2_n_1_1_net_node.html#a8dc08f8c34ae6005599c095a0a2da571">Trinacria::S2N::NetNode::GetEvents</a></div><div class="ttdeci">sol::object GetEvents(const std::string &amp;id, Args &amp;&amp;... args) const</div><div class="ttdoc">The wrapper to the lua function GetEvents. This calls the lua function under the hood.</div><div class="ttdef"><b>Definition</b> NetNode.h:110</div></div>
-<div class="ttc" id="aclass_trinacria_1_1_s2_n_1_1_net_node_html_aca195f5798a1d50e22dab6fcab288ac6"><div class="ttname"><a href="class_trinacria_1_1_s2_n_1_1_net_node.html#aca195f5798a1d50e22dab6fcab288ac6">Trinacria::S2N::NetNode::NetNode</a></div><div class="ttdeci">NetNode(sol::environment *environment)</div><div class="ttdoc">A constructor that links to a given state.</div></div>
 <div class="ttc" id="aclass_trinacria_1_1_s2_n_1_1_net_node_html_ae5f62af96b5116e945690e80dee9f530"><div class="ttname"><a href="class_trinacria_1_1_s2_n_1_1_net_node.html#ae5f62af96b5116e945690e80dee9f530">Trinacria::S2N::NetNode::GetScript</a></div><div class="ttdeci">sol::object GetScript(const std::string &amp;id, Args &amp;&amp;... args) const</div><div class="ttdoc">The wrapper to the lua function GetScript. This calls the lua function under the hood.</div><div class="ttdef"><b>Definition</b> NetNode.h:91</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
