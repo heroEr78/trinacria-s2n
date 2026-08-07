@@ -6,7 +6,7 @@ TrinacriaS2N is a light scripting engine made to be used as a base for more comp
 
 - **Language**: C++
 
-- **Generation of build files**: [CMake](https://cmake.org/)
+- **Build System**: [CMake](https://cmake.org/)
 
 - **Testing**: [GoogleTest](https://github.com/google/googletest) with CTest integration
 
